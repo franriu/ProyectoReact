@@ -4,10 +4,10 @@ import { useParams } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 
 import { items } from "../data/data";
-import { ItemList } from './ItemList';
 
-export const ItemListContainer = () => {
-    const [products, setProducts] = useState([]);
+
+export const Detail = () => {
+    const [product, setProduct] = useState([]);
     const [loading, setLoading] = useState(true);
 
     const {id} = useParams();
@@ -17,13 +17,8 @@ export const ItemListContainer = () => {
     useEffect (() => {
         new Promise ((resolve,reject) => setTimeout(() =>resolve (items), 3000))
         .then((respuesta) => {
-            if(!id) {
-                setProducts(respuesta);
-            } else {
-                const filtered = respuesta.filter (
-                (item) => item.category === id);
-                setProducts(filtered);
-            }
+                const finded = respuesta.find ((item) => item.id === Number(id));
+                setProduct(finded);
         })
         .finally(() =>setLoading(false));
     }, [id] );
@@ -33,7 +28,8 @@ export const ItemListContainer = () => {
 
     return(
     <Container className='d-flex mt-4'>
-    <ItemList items={products} />
+    <h1>Producto</h1>
+    <h2>{product.titulo}</h2>
 </Container>
     );
 };

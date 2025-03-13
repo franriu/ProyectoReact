@@ -1,23 +1,22 @@
-import { CartWidget } from "./CartWidget";
+
+import { NavLink } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 
 export const NavBar = () => (
-  <div>
-    <img src="https://images.unsplash.com/photo-1577655199646-736691c95b13?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG1pY2hhZWwlMjBqb3JkYW58ZW58MHx8MHx8fDA%3D" />
-
-    <ul class="menu">
-      <li>
-        <a href="#" class="active">
-          Inicio
-        </a>
-      </li>
-      <li>
-        <a href="#">Remeras</a>
-      </li>
-      <li>
-        <a href="#">Zapatillas</a>
-      </li>
-    </ul>
-
-    <CartWidget />
-  </div>
+<Navbar bg="secondary" data-bs-theme="dark">
+        <Container>
+        <Navbar.Brand href="#home">JordanEc</Navbar.Brand>
+        <Nav className="me-auto">
+        <Nav.Link to="/"as={NavLink}>
+        t-shirt
+        </Nav.Link>
+        <Nav.Link to="/category/azul" as={NavLink}>
+        Sneakers</Nav.Link>
+        <Nav.Link to="/category/rojo" as={NavLink}>
+        cart</Nav.Link>
+        </Nav>
+        </Container>
+</Navbar>
 );
